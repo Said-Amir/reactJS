@@ -1,0 +1,12 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    height: 5vh;
+    width: 90%;
+}
+
+header{
+    border-bottom: rgb(136, 194, 136) 5px solid;
+}
