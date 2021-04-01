@@ -27,13 +27,13 @@ export default class Item extends Component {
     }
 
     render() {
-        let style = {}
+        let style = "border bg-white d-flex text-align-center justify-content-between w-50 mx-auto mt-3 p-2 rounded"
         if (this.state.isDone) {
-            style = {backgroundColor : 'green'}
+            style = "border text-white bg-success d-flex text-align-center justify-content-between w-50 mx-auto mt-3 p-2 rounded"
         }
-        let itemValue = <span style={style}>{this.props.content}</span>
+        let itemValue = <span className="fs-1">{this.props.content}</span>
         if (this.state.isEdit == true) {
-            itemValue = <input onKeyDown={(e) => this.onInput(e)} type="text" defaultValue={this.props.content}/>
+            itemValue = <input className="form-control w-50" onKeyDown={(e) => this.onInput(e)} type="text" defaultValue={this.props.content}/>
         }
         if (this.props.mode == "done" && this.state.isDone == false) {
             return null
@@ -42,11 +42,13 @@ export default class Item extends Component {
             return null
         }
         return (
-            <div>
+            <div className = {style} >
                 {itemValue}
-                <button onClick={this.done}>done</button>
-                <button onClick={() => this.props.remove(this.props.id)}>remove</button>
-                <button onChange={() => {}} onClick={this.edit}>Edit</button>
+                <div>
+                    <button className="btn btn-sm mr-1 btn-success border rounded" onClick={this.done}><i className="bi bi-check"></i></button>
+                    <button className="btn btn-sm mr-1 btn-danger border rounded" onClick={() => this.props.remove(this.props.id)}><i className="bi bi-trash-fill"></i></button>
+                    <button className="btn btn-sm mr-1 btn-warning border rounded text-white" onChange={() => {}} onClick={this.edit}><i className="bi bi-pencil-fill"></i></button>
+                </div>
             </div>
         )
     }
